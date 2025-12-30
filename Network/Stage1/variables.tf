@@ -10,4 +10,5 @@ data "terraform_remote_state" "management" {
 
 locals {
   network_account_id = data.terraform_remote_state.management.outputs.network_account_id
+  prod_account_id = data.terraform_remote_state.management.outputs.prod_account_id
 }

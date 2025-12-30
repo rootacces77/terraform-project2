@@ -5,6 +5,8 @@ module "us-east-1" {
     }
 
     source = "./us-east-1"
+
+    prod_account_id = local.prod_account_id
   
 }
 
@@ -15,6 +17,8 @@ module "us-west-1" {
     }
     source = "./us-west-1"
     depends_on = [ module.us-east-1 ]
+
+    prod_account_id = local.prod_account_id
   
 }
 
@@ -25,5 +29,7 @@ module "eu-central-1" {
     }
     source = "./eu-central-1"
     depends_on = [ module.us-west-1 ]
+
+    prod_account_id = local.prod_account_id
   
 }

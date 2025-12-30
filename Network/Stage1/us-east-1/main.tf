@@ -28,3 +28,12 @@ module "routes" {
     vpc-2-cidr      = module.vpc-2.vpc_cidr
   
 }
+
+
+module "ram" {
+    source = "./RAM"
+
+    prod_account_id   = var.prod_account_id
+    vpc-2-subnet-arns = tolist(flatten([module.vpc-2.vpc_2_private1_subnets,module.vpc-2.vpc_2_private2_subnets,module.vpc-2.vpc_2_public_subnets]))
+  
+}
