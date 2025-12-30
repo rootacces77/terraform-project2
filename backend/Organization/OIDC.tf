@@ -31,7 +31,7 @@ data "aws_iam_policy_document" "gha_oidc_assume" {
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:rootacces77/terraform-project1:ref:refs/heads/main"]
+      values   = ["repo:rootacces77/terraform-project2:ref:refs/heads/main"]
     }
   }
 }

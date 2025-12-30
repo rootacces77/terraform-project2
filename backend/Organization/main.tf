@@ -6,18 +6,21 @@
   ]
 } */
 
+/*
 # Child accounts (email must be unique)
 resource "aws_organizations_account" "network" {
   name  = "Network"
   email = "project.practice77+network@gmail.com"
  # depends_on = [aws_organizations_organization.organization]
 }
+*/
 
+/*
 resource "aws_organizations_account" "security" {
   name  = "Security"
   email = "project.practice77+security@gmail.com"
  # depends_on = [aws_organizations_organization.organization]
-}
+} */
 
 /*resource "aws_organizations_account" "dev" {
   name  = "Dev"

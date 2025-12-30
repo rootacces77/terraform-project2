@@ -12,12 +12,17 @@ terraform {
 provider "aws" {
   region  = "us-east-1"
   profile = "root"
+
+  shared_config_files      = ["~/.aws/config"]
+  shared_credentials_files = ["~/.aws/credentials"]
 }
 
+/*
 module "accounts" {
   source = "./Organization"
 
-}
+} 
+*/
 
 module "tfstate" {
   source = "./tfstate"
