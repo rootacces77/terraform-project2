@@ -16,8 +16,7 @@ module "tgw" {
     vpc-2-id = module.vpc-2.vpc_id
 
     vpc-1-subnet-ids = module.vpc-1.vpc_1_vpn_subnets_ids
-    vpc-2-subnet-ids = tolist(flatten([module.vpc-2.vpc_2_private1_subnets_ids,module.vpc-2.vpc_2_private2_subnets_ids,module.vpc-2.vpc_2_public_subnets_ids]))
-  
+    vpc-2-subnet-ids = module.vpc-2.vpc_2_private1_subnets_ids
 }
 
 module "routes" {
