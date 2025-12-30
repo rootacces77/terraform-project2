@@ -92,7 +92,7 @@ resource "aws_route_table" "vpc_1_public_rt" {
 resource "aws_route_table_association" "vpc_1_public_rt" {
   for_each       = aws_subnet.vpc_1_public
   subnet_id      = each.value.id
-  route_table_id = aws_route_table.vpc_1_public.id
+  route_table_id = aws_route_table.vpc_1_public_rt.id
 }
 
 resource "aws_route" "vpc_1_public_igw_route" {
@@ -144,7 +144,7 @@ resource "aws_route_table_association" "vpc_1_vpn_rt" {
 resource "aws_subnet" "vpc_1_private" {
   for_each = local.vpc_1_private_subnets
 
-  vpc_id                  = aws_vpc.vpc_vpc_1.id
+  vpc_id                  = aws_vpc.vpc_1.id
   cidr_block              = each.value
   availability_zone       = each.key
   map_public_ip_on_launch = false
@@ -157,7 +157,7 @@ resource "aws_subnet" "vpc_1_private" {
 }
 
 resource "aws_route_table" "vpc_1_private_rt" {
-  vpc_id = aws_vpc.vpc_prod_app.id
+  vpc_id = aws_vpc.vpc_1.id
 
   tags = {
     Name        = "VPC-1-PRIVATE-RT"
