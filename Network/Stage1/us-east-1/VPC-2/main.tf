@@ -46,7 +46,7 @@ locals {
 resource "aws_subnet" "vpc_2_public" {
   for_each = local.vpc_2_public_subnets
 
-  vpc_id                  = aws_vpc.vpc_1.id
+  vpc_id                  = aws_vpc.vpc_2.id
   cidr_block              = each.value
   availability_zone       = each.key
   map_public_ip_on_launch = true
@@ -92,7 +92,7 @@ resource "aws_route_table" "vpc_2_public_rt" {
 resource "aws_route_table_association" "vpc_2_public_rt" {
   for_each       = aws_subnet.vpc_2_public
   subnet_id      = each.value.id
-  route_table_id = aws_route_table.vpc_2_public.id
+  route_table_id = aws_route_table.vpc_2_public_rt.id
 }
 
 resource "aws_route" "vpc_2_public_igw_route" {
@@ -144,7 +144,7 @@ resource "aws_route_table_association" "vpc_2_private_1_rt" {
 resource "aws_subnet" "vpc_2_private_2" {
   for_each = local.vpc_2_private2_subnets
 
-  vpc_id                  = aws_vpc.vpc_vpc_2.id
+  vpc_id                  = aws_vpc.vpc_2.id
   cidr_block              = each.value
   availability_zone       = each.key
   map_public_ip_on_launch = false
@@ -157,7 +157,7 @@ resource "aws_subnet" "vpc_2_private_2" {
 }
 
 resource "aws_route_table" "vpc_2_private_rt" {
-  vpc_id = aws_vpc.vpc_2
+  vpc_id = aws_vpc.vpc_2.id
 
   tags = {
     Name        = "VPC-2-PRIVATE-RT"
