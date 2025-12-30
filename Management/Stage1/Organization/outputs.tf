@@ -1,0 +1,24 @@
+output "org_id" {
+  value = local.org_id
+  description = "Organization ID for policies"
+}
+output "management_account_id" {
+  value = local.management_account_id
+  description = "Management Account ID"
+}
+
+output "security_account_id" {
+  value = local.security_account_id
+  description = "Security Account ID"
+}
+
+output "prod_account_id" {
+  value = local.prod_account_id
+  description = "Prod Account ID"
+}
+
+output "network_account_id" {
+  value = local.network_account_id
+  description = "Network Account ID"
+}
+
