@@ -43,7 +43,7 @@ output "vpc_1_vpn_subnets_ids" {
 }
 
 output "vpc1-vpn-rt-id" {
-  value = aws_route_table.vpc_1_vpn_rt
+  value = aws_route_table.vpc_1_vpn_rt.id
   description = "ID of VPC-1 VPN Subnet RT "
   
 }
