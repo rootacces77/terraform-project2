@@ -3,7 +3,7 @@ output "vpc_id" {
   description = "VPC 1 ID"
 }
 
-output "vpc_1_vpn_subnets" {
+output "vpc_1_private1_subnets" {
   value = [for s in aws_subnet.vpc_1_vpn : s.arn]
   description = "ARN of ClientVPN Subnets"
 }
@@ -13,7 +13,7 @@ output "vpc_1_public_subnets" {
   description = "ARN of Public Subnets"
 }
 
-output "vpc_1_private_subnets" {
+output "vpc_1_private2_subnets" {
   value = [for s in aws_subnet.vpc_1_private : s.arn]
   description = "ARN of Private Subnets"
 }

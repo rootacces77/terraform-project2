@@ -17,3 +17,15 @@ variable "vpc-1-subnet-ids" {
   
 }
 
+variable "us-east-1-tgw-id" {
+    type = string
+    description = "US-EAST-1 TGW ID"
+  
+}
+
+variable "region-name" {
+    type = string
+    description = "TGW Peering attachment region id"
+    default = "us-east-1"
+  
+}

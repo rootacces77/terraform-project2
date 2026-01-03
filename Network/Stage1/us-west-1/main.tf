@@ -10,6 +10,7 @@ module "tgw" {
 
     vpc-1-id = module.vpc-1.vpc_id
     vpc-1-subnet-ids = module.vpc-1.vpc_1_vpn_subnets_ids
+    us-east-1-tgw-id = var.us-east-1-tgw-id
 
 }
 

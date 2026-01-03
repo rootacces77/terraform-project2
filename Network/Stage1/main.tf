@@ -19,6 +19,7 @@ module "us-west-1" {
     depends_on = [ module.us-east-1 ]
 
     prod_account_id = local.prod_account_id
+    us-east-1-tgw-id = module.us-east-1.tgw-id
   
 }
 
@@ -31,5 +32,6 @@ module "eu-central-1" {
     depends_on = [ module.us-west-1 ]
 
     prod_account_id = local.prod_account_id
+    us-east-1-tgw-id = module.us-east-1.tgw-id
   
 }

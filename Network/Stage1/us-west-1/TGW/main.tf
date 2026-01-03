@@ -56,3 +56,16 @@ resource "aws_ec2_transit_gateway_route_table_association" "assoc_a" {
 }
 
 
+############################################
+# TGW Attachments (eu-central-1 -> us-east-1)
+############################################
+resource "aws_ec2_transit_gateway_peering_attachment" "tgw-peering" {
+  transit_gateway_id      = aws_ec2_transit_gateway.this.id
+  peer_transit_gateway_id = var.us-east-1-tgw-id
+  peer_region             = var.region-name
+
+
+  tags = {
+    Name = "${var.name}-attach-${var.region-name}-tgw"
+  }
+}
