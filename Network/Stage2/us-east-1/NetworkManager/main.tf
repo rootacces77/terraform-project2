@@ -10,7 +10,7 @@ resource "aws_networkmanager_global_network" "this" {
 }
 
 ############################
-# 2) Register both TGWs into the Global Network
+# 2) Register TGWs into the Global Network
 ############################
 resource "aws_networkmanager_transit_gateway_registration" "eu_central_1" {
   global_network_id   = aws_networkmanager_global_network.this.id

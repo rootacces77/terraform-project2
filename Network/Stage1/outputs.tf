@@ -52,3 +52,12 @@ output "tgw-arn-eu-central-1" {
     value = module.eu-central-1.tgw-arn
   
 }
+
+output "tgw-id-us-east-1" {
+    value = module.us-east-1.tgw-id
+  
+}
+
+output "tgw-rt-id-us-east-1" {
+    value = module.us-east-1.tgw-rt-id
+}

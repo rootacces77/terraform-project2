@@ -8,3 +8,8 @@ output "tgw-arn" {
     value = aws_ec2_transit_gateway.this.arn
   
 }
+
+output "tgw-rt-id" {
+    value = aws_ec2_transit_gateway_route_table.rt_main.id
+  
+}

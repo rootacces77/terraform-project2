@@ -14,6 +14,11 @@ output "tgw-id" {
   
 }
 
+output "tgw-rt-id" {
+    value = module.tgw.tgw-rt-id
+  
+}
+
 output "vpc1-vpn-rt-id" {
   value = module.vpc-1.vpc1-vpn-rt-id
   description = "ID of VPC-1 VPN Subnet RT "
