@@ -1,6 +1,9 @@
 module "us-east-1" {
 
     source = "./us-east-1"
+    providers = {
+      aws = aws.us-east-1
+    }
 
     tgw-id                      = local.tgw-id-us-east-1
     tgw-rt-id                   = local.tgw-rt-id-us-east-1
@@ -21,6 +24,9 @@ module "us-east-1" {
 module "eu-central-1" {
     source  = "./eu-central-1"
     depends_on = [ module.us-east-1 ]
+    providers = {
+      aws = aws.eu-central-1
+    }
 
 
     tgw-peering_attachment_id = local.tgw-peering-id-eu-central-1
@@ -31,6 +37,9 @@ module "eu-central-1" {
 module "us-west-1" {
     source  = "./eu-central-1"
     depends_on = [ module.us-east-1 ]
+    providers = {
+      aws = aws.us-west-1
+    }
 
 
     tgw-peering_attachment_id = local.tgw-peering-id-us-west-1
