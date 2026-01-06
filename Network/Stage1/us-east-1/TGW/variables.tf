@@ -1,4 +1,4 @@
-variable "name" {
+variable "tgw-name" {
     type = string
     description = "Name of the TGW"
   

@@ -10,7 +10,7 @@ module "vpc-2" {
 module "tgw" {
     source = "./TGW"
 
-    name = "us-east-1"
+    tgw-name = "us-east-1"
 
     vpc-1-id = module.vpc-1.vpc_id
     vpc-2-id = module.vpc-2.vpc_id

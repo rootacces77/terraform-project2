@@ -5,7 +5,7 @@ module "vpc-1" {
 module "tgw" {
     source = "./TGW"
 
-    name = "eu-central-1"
+    tgw-name = "eu-central-1"
 
     vpc-1-id = module.vpc-1.vpc_id
     us-east-1-tgw-id = var.us-east-1-tgw-id

@@ -6,7 +6,7 @@ module "vpc-1" {
 module "tgw" {
     source = "./TGW"
 
-    name = "us-west-1"
+    tgw-name = "us-west-1"
 
     vpc-1-id = module.vpc-1.vpc_id
     vpc-1-subnet-ids = module.vpc-1.vpc_1_vpn_subnets_ids
