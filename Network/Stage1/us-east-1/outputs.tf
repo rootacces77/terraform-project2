@@ -1,31 +1,31 @@
-output "vpc-1-id" {
-    value = module.vpc-1.vpc_id
-    description = "VPC-1 ID"
+output "vpc_1_id" {
+    value = module.vpc_1.vpc_id
+    description = "VPC_1 ID"
 }
 
-output "vpc-2-id" {
-    value = module.vpc-2.vpc_id
-    description = "VPC-2 ID"
+output "vpc_2_id" {
+    value = module.vpc_2.vpc_id
+    description = "VPC_2 ID"
 }
 
-output "tgw-id" {
-    value = module.tgw.tgw-id
+output "tgw_id" {
+    value = module.tgw.tgw_id
     description = "TGW ID"
   
 }
 
-output "tgw-rt-id" {
-    value = module.tgw.tgw-rt-id
+output "tgw_rt_id" {
+    value = module.tgw.tgw_rt_id
   
 }
 
-output "vpc1-vpn-rt-id" {
-  value = module.vpc-1.vpc1-vpn-rt-id
-  description = "ID of VPC-1 VPN Subnet RT "
+output "vpc1_vpn_rt_id" {
+  value = module.vpc_1.vpc1_vpn_rt_id
+  description = "ID of VPC_1 VPN Subnet RT "
   
 }
 
-output "tgw-arn" {
-    value = module.tgw.tgw-arn
+output "tgw_arn" {
+    value = module.tgw.tgw_arn
   
 }

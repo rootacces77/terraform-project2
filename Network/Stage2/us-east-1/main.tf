@@ -1,21 +1,21 @@
 module "tgw" {
     source = "./TGW"
 
-    tgw-peering-id-eu-central-1 = var.tgw-peering-id-eu-central-1
-    tgw-peering-id-us-west-1    = var.tgw-peering-id-us-west-1
-    tgw-rt-id                   = var.tgw-rt-id
-    vpc-eu-central-1-cidr       = var.vpc-eu-central-1-cidr
-    vpc-us-west-1-cidr          = var.vpc-us-west-1-cidr
+    tgw_peering_id_eu_central_1 = var.tgw_peering_id_eu_central_1
+    tgw_peering_id_us_west_1    = var.tgw_peering_id_us_west_1
+    tgw_rt_id                   = var.tgw_rt_id
+    vpc_eu_central_1_cidr       = var.vpc_eu_central_1_cidr
+    vpc_us_west_1_cidr          = var.vpc_us_west_1_cidr
   
 }
 
 module "routes" {
     source = "./ROUTES"
 
-    vpc-1-vpn-rt-id       = var.vpc-1-vpn-rt-id
-    vpc-eu-central-1-cidr = var.vpc-eu-central-1-cidr
-    vpc-us-west-1-cidr    = var.vpc-us-west-1-cidr
-    tgw-id                = var.tgw-id
+    vpc_1_vpn_rt_id       = var.vpc_1_vpn_rt_id
+    vpc_eu_central_1_cidr = var.vpc_eu_central_1_cidr
+    vpc_us_west_1_cidr    = var.vpc_us_west_1_cidr
+    tgw_id                = var.tgw_id
 
   
 }

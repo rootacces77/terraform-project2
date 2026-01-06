@@ -1,7 +1,7 @@
 
-variable "vpc-1-subnet-arns" {
+variable "vpc_1_subnet_arns" {
     type = list(string)
-    description = "VPC-2 Subnet ARNS"
+    description = "VPC_2 Subnet ARNS"
   
 }
 

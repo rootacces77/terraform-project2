@@ -1,31 +1,31 @@
-module "vpc-1" {
-  source = "./VPC-1"
+module "vpc_1" {
+  source = "./VPC_1"
 }
 
-module "vpc-2" {
-    source = "./VPC-2"
+module "vpc_2" {
+    source = "./VPC_2"
   
 }
 
 module "tgw" {
     source = "./TGW"
 
-    tgw-name = "us-east-1"
+    tgw_name = "us_east_1"
 
-    vpc-1-id = module.vpc-1.vpc_id
-    vpc-2-id = module.vpc-2.vpc_id
+    vpc_1_id = module.vpc_1.vpc_id
+    vpc_2_id = module.vpc_2.vpc_id
 
-    vpc-1-subnet-ids = module.vpc-1.vpc_1_vpn_subnets_ids
-    vpc-2-subnet-ids = module.vpc-2.vpc_2_private1_subnets_ids
+    vpc_1_subnet_ids = module.vpc_1.vpc_1_vpn_subnets_ids
+    vpc_2_subnet_ids = module.vpc_2.vpc_2_private1_subnets_ids
 }
 
 module "routes" {
     source = "./ROUTES"
 
-    tgw-id = module.tgw.tgw-id
+    tgw_id = module.tgw.tgw_id
 
-    vpc-1-vpn-rt-id = module.vpc-1.vpc1-vpn-rt-id
-    vpc-2-cidr      = module.vpc-2.vpc_cidr
+    vpc_1_vpn_rt_id = module.vpc_1.vpc1_vpn_rt_id
+    vpc_2_cidr      = module.vpc_2.vpc_cidr
   
 }
 
@@ -34,6 +34,6 @@ module "ram" {
     source = "./RAM"
 
     prod_account_id   = var.prod_account_id
-    vpc-2-subnet-arns = tolist(flatten([module.vpc-2.vpc_2_private1_subnets,module.vpc-2.vpc_2_private2_subnets,module.vpc-2.vpc_2_public_subnets]))
+    vpc_2_subnet_arns = tolist(flatten([module.vpc_2.vpc_2_private1_subnets,module.vpc_2.vpc_2_private2_subnets,module.vpc_2.vpc_2_public_subnets]))
   
 }

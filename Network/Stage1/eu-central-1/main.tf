@@ -1,22 +1,22 @@
-module "vpc-1" {
-  source = "./VPC-1"
+module "vpc_1" {
+  source = "./VPC_1"
 }
 
 module "tgw" {
     source = "./TGW"
 
-    tgw-name = "eu-central-1"
+    tgw_name = "eu_central_1"
 
-    vpc-1-id = module.vpc-1.vpc_id
-    us-east-1-tgw-id = var.us-east-1-tgw-id
+    vpc_1_id = module.vpc_1.vpc_id
+    us_east_1_tgw_id = var.us_east_1_tgw_id
 
-    vpc-1-subnet-ids = module.vpc-1.vpc_1_vpn_subnets_ids
+    vpc_1_subnet_ids = module.vpc_1.vpc_1_vpn_subnets_ids
 }
 
 module "ram" {
     source = "./RAM"
 
     prod_account_id   = var.prod_account_id
-    vpc-1-subnet-arns = tolist(flatten([module.vpc-1.vpc_1_private1_subnets,module.vpc-1.vpc_1_private2_subnets,module.vpc-1.vpc_1_public_subnets]))
+    vpc_1_subnet_arns = tolist(flatten([module.vpc_1.vpc_1_private1_subnets,module.vpc_1.vpc_1_private2_subnets,module.vpc_1.vpc_1_public_subnets]))
   
 }

@@ -4,7 +4,7 @@ resource "aws_vpc" "vpc_2" {
   enable_dns_hostnames = true
 
   tags = {
-    Name        = "VPC-2"
+    Name        = "VPC_2"
     Terraform   = "true"
   }
 }
@@ -13,7 +13,7 @@ resource "aws_internet_gateway" "vpc_2_igw" {
   vpc_id = aws_vpc.vpc_2.id
 
   tags = {
-    Name        = "VPC-2-IGW"
+    Name        = "VPC_2_IGW"
     Terraform   = "true"
   }
 }
@@ -23,19 +23,19 @@ resource "aws_internet_gateway" "vpc_2_igw" {
 ########################
 locals {
   vpc_2_public_subnets = {
-    "us-east-1a" = "10.17.0.0/20"
-    "us-east-1b" = "10.17.16.0/20"
-    "us-east-1c" = "10.17.32.0/20"
+    "us_east_1a" = "10.17.0.0/20"
+    "us_east_1b" = "10.17.16.0/20"
+    "us_east_1c" = "10.17.32.0/20"
   }
   vpc_2_private1_subnets = {
-    "us-east-1a" = "10.17.48.0/20"
-    "us-east-1b" = "10.17.64.0/20"
-    "us-east-1c" = "10.17.80.0/20"
+    "us_east_1a" = "10.17.48.0/20"
+    "us_east_1b" = "10.17.64.0/20"
+    "us_east_1c" = "10.17.80.0/20"
   }
   vpc_2_private2_subnets = {
-    "us-east-1a" = "10.17.96.0/20"
-    "us-east-1b" = "10.17.112.0/20"
-    "us-east-1c" = "10.17.128.0/20"
+    "us_east_1a" = "10.17.96.0/20"
+    "us_east_1b" = "10.17.112.0/20"
+    "us_east_1c" = "10.17.128.0/20"
   }
 }
 
@@ -52,7 +52,7 @@ resource "aws_subnet" "vpc_2_public" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name        = "VPC-2-SBNT-PUBLIC"
+    Name        = "VPC_2_SBNT_PUBLIC"
     Tier        = "PUBLIC"
     Terraform   = "true"
   }
@@ -64,16 +64,16 @@ resource "aws_eip" "nat" {
   domain = "vpc"
 
   tags = {
-    Name = "nat-eip"
+    Name = "nat_eip"
   }
 }
 
 resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.vpc_2_public["us-east-1a"].id
+  subnet_id     = aws_subnet.vpc_2_public["us_east_1a"].id
 
   tags = {
-    Name = "nat-gw-public-1"
+    Name = "nat_gw_public_1"
   }
 }
 
@@ -84,7 +84,7 @@ resource "aws_route_table" "vpc_2_public_rt" {
   vpc_id = aws_vpc.vpc_2.id
 
   tags = {
-    Name        = "VPC-2-PUBLIC-RT"
+    Name        = "VPC_2_PUBLIC_RT"
     Terraform   = "true"
   }
 }
@@ -114,8 +114,8 @@ resource "aws_subnet" "vpc_2_private_1" {
   map_public_ip_on_launch = false
 
   tags = {
-    Name        = "VPC-2-SBNT-PRIVATE-1"
-    Tier        = "PRIVATE1-1"
+    Name        = "VPC_2_SBNT_PRIVATE_1"
+    Tier        = "PRIVATE1_1"
     Terraform   = "true"
   }
 }
@@ -124,7 +124,7 @@ resource "aws_route_table" "vpc_2_private_1_rt" {
   vpc_id = aws_vpc.vpc_2.id
 
   tags = {
-    Name        = "VPC-2-PRIVATE-2-RT"
+    Name        = "VPC_2_PRIVATE_2_RT"
     Terraform   = "true"
   }
 }
@@ -150,7 +150,7 @@ resource "aws_subnet" "vpc_2_private_2" {
   map_public_ip_on_launch = false
 
   tags = {
-    Name        = "VPC-2-SBNT-PRIVATE-2"
+    Name        = "VPC_2_SBNT_PRIVATE_2"
     Tier        = "PRIVATE"
     Terraform   = "true"
   }
@@ -160,7 +160,7 @@ resource "aws_route_table" "vpc_2_private_rt" {
   vpc_id = aws_vpc.vpc_2.id
 
   tags = {
-    Name        = "VPC-2-PRIVATE-RT"
+    Name        = "VPC_2_PRIVATE_RT"
     Terraform   = "true"
   }
 }

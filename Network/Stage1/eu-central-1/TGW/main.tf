@@ -2,7 +2,7 @@
 # Transit Gateway
 ############################################
 resource "aws_ec2_transit_gateway" "this" {
-  description                     = "${var.tgw-name}-tgw"
+  description                     = "${var.tgw_name}_tgw"
   amazon_side_asn                 = 64512
   auto_accept_shared_attachments  = "disable"
   default_route_table_association = "disable"
@@ -11,7 +11,7 @@ resource "aws_ec2_transit_gateway" "this" {
   vpn_ecmp_support                = "enable"
 
   tags = {
-    Name = "${var.tgw-name}-tgw"
+    Name = "${var.tgw_name}_tgw"
   }
 }
 
@@ -22,7 +22,7 @@ resource "aws_ec2_transit_gateway_route_table" "rt_main" {
   transit_gateway_id = aws_ec2_transit_gateway.this.id
 
   tags = {
-    Name = "${var.tgw-name}-tgw-rt-main"
+    Name = "${var.tgw_name}_tgw_rt_main"
   }
 }
 
@@ -33,14 +33,14 @@ resource "aws_ec2_transit_gateway_route_table" "rt_main" {
 ############################################
 resource "aws_ec2_transit_gateway_vpc_attachment" "vpc_1" {
   transit_gateway_id = aws_ec2_transit_gateway.this.id
-  vpc_id             = var.vpc-1-id
-  subnet_ids         = var.vpc-1-subnet-ids
+  vpc_id             = var.vpc_1_id
+  subnet_ids         = var.vpc_1_subnet_ids
 
   dns_support  = "enable"
   ipv6_support = "disable"
 
   tags = {
-    Name = "${var.tgw-name}-attach-vpc-1"
+    Name = "${var.tgw_name}_attach_vpc_1"
   }
 }
 
@@ -49,7 +49,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "vpc_1" {
 # Associations (decide which TGW RT is used
 # for traffic COMING FROM each VPC)
 ############################################
-# VPC-A traffic uses rt_main (so A can route to B)
+# VPC_A traffic uses rt_main (so A can route to B)
 resource "aws_ec2_transit_gateway_route_table_association" "assoc_a" {
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.vpc_1.id
   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.rt_main.id
@@ -58,15 +58,15 @@ resource "aws_ec2_transit_gateway_route_table_association" "assoc_a" {
 
 
 ############################################
-# TGW Attachments (eu-central-1 -> us-east-1)
+# TGW Attachments (eu_central_1 _> us_east_1)
 ############################################
 resource "aws_ec2_transit_gateway_peering_attachment" "tgw_peering" {
   transit_gateway_id      = aws_ec2_transit_gateway.this.id
-  peer_transit_gateway_id = var.us-east-1-tgw-id
-  peer_region             = var.region-name
+  peer_transit_gateway_id = var.us_east_1_tgw_id
+  peer_region             = var.region_name
 
 
   tags = {
-    Name = "${var.tgw-name}-attach-${var.region-name}-tgw"
+    Name = "${var.tgw_name}_attach_${var.region_name}_tgw"
   }
 }

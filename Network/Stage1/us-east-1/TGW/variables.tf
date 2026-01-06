@@ -1,29 +1,29 @@
-variable "tgw-name" {
+variable "tgw_name" {
     type = string
     description = "Name of the TGW"
   
 }
 
-variable "vpc-1-id" {
+variable "vpc_1_id" {
     type = string
-    description = "ID of VPC-1"
+    description = "ID of VPC_1"
   
 }
 
-variable "vpc-2-id" {
+variable "vpc_2_id" {
     type = string
-    description = "ID of VPC-2"
+    description = "ID of VPC_2"
   
 }
 
-variable "vpc-1-subnet-ids" {
+variable "vpc_1_subnet_ids" {
     type = list(string)
-    description = "ID's of VPC-1 subnets"
+    description = "ID's of VPC_1 subnets"
   
 }
 
-variable "vpc-2-subnet-ids" {
+variable "vpc_2_subnet_ids" {
     type = list(string)
-    description = "ID's of VPC-2 subnets"
+    description = "ID's of VPC_2 subnets"
   
 }

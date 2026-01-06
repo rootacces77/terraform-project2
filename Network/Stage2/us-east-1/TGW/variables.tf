@@ -1,27 +1,27 @@
-variable "tgw-peering-id-eu-central-1" {
+variable "tgw_peering_id_eu_central_1" {
     type = string
     description = "TGW peering ID EU CENTRAL 1"
 }
 
-variable "tgw-peering-id-us-west-1" {
+variable "tgw_peering_id_us_west_1" {
     type = string
-    description = "TGW peering ID US-WEST-1"
+    description = "TGW peering ID US_WEST_1"
 }
 
-variable "tgw-rt-id" {
+variable "tgw_rt_id" {
     type = string
     description = "TGW RT ID"
   
 }
 
-variable "vpc-us-west-1-cidr" {
+variable "vpc_us_west_1_cidr" {
     type = string
-    description = "us-west-1 VPC-1 CIDR"
+    description = "us_west_1 VPC_1 CIDR"
   
 }
 
-variable "vpc-eu-central-1-cidr" {
+variable "vpc_eu_central_1_cidr" {
     type = string
-    description = "eu-central-1 VPC-1 CIDR"
+    description = "eu_central_1 VPC_1 CIDR"
   
 }

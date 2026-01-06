@@ -15,7 +15,7 @@ provider "aws" {
 
   assume_role {
     role_arn     = "arn:aws:iam::${local.network_account_id}:role/AdminRole"
-    session_name = "tf-prod"
+    session_name = "tf-network"
   }
 }
 
@@ -26,7 +26,7 @@ provider "aws" {
 
   assume_role {
     role_arn     = "arn:aws:iam::${local.network_account_id}:role/AdminRole"
-    session_name = "tf-prod"
+    session_name = "tf-network"
   }
 }
 
@@ -37,6 +37,6 @@ provider "aws" {
 
   assume_role {
     role_arn     = "arn:aws:iam::${local.network_account_id}:role/AdminRole"
-    session_name = "tf-prod"
+    session_name = "tf-network"
   }
 }

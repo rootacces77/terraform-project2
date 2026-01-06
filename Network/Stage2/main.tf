@@ -1,48 +1,48 @@
-module "us-east-1" {
+module "us_east_1" {
 
-    source = "./us-east-1"
+    source = "./us_east_1"
     providers = {
-      aws = aws.us-east-1
+      aws = aws.us_east_1
     }
 
-    tgw-id                      = local.tgw-id-us-east-1
-    tgw-rt-id                   = local.tgw-rt-id-us-east-1
+    tgw_id                      = local.tgw_id_us_east_1
+    tgw_rt_id                   = local.tgw_rt_id_us_east_1
 
-    tgw-peering-id-eu-central-1 = local.tgw-peering-id-eu-central-1
-    tgw-peering-id-us-west-1    = local.tgw-peering-id-us-west-1
+    tgw_peering_id_eu_central_1 = local.tgw_peering_id_eu_central_1
+    tgw_peering_id_us_west_1    = local.tgw_peering_id_us_west_1
 
-    vpc-1-vpn-rt-id             = local.vpc1-vpn-rt-id-us-east-1
-    vpc-eu-central-1-cidr       = local.vpc-cidr-eu-central-1
-    vpc-us-west-1-cidr          = local.vpc-cidr-us-west-1
+    vpc_1_vpn_rt_id             = local.vpc1_vpn_rt_id_us_east_1
+    vpc_eu_central_1_cidr       = local.vpc_cidr_eu_central_1
+    vpc_us_west_1_cidr          = local.vpc_cidr_us_west_1
 
-    tgw_arn_eu_central_1        = local.tgw-arn-eu-central-1
-    tgw_arn_us_east_1           = local.tgw-arn-us-east-1
-    tgw_arn_us_west_1           = local.tgw-arn-us-west-1
+    tgw_arn_eu_central_1        = local.tgw_arn_eu_central_1
+    tgw_arn_us_east_1           = local.tgw_arn_us_east_1
+    tgw_arn_us_west_1           = local.tgw_arn_us_west_1
   
 }
 
-module "eu-central-1" {
-    source  = "./eu-central-1"
-    depends_on = [ module.us-east-1 ]
+module "eu_central_1" {
+    source  = "./eu_central_1"
+    depends_on = [ module.us_east_1 ]
     providers = {
-      aws = aws.eu-central-1
+      aws = aws.eu_central_1
     }
 
 
-    tgw-peering_attachment_id = local.tgw-peering-id-eu-central-1
-    tgw-route_table_id        = local.tgw-rt-id-eu-central-1
+    tgw_peering_attachment_id = local.tgw_peering_id_eu_central_1
+    tgw_route_table_id        = local.tgw_rt_id_eu_central_1
   
 }
 
-module "us-west-1" {
-    source  = "./eu-central-1"
-    depends_on = [ module.us-east-1 ]
+module "us_west_1" {
+    source  = "./eu_central_1"
+    depends_on = [ module.us_east_1 ]
     providers = {
-      aws = aws.us-west-1
+      aws = aws.us_west_1
     }
 
 
-    tgw-peering_attachment_id = local.tgw-peering-id-us-west-1
-    tgw-route_table_id        = local.tgw-rt-id-us-west-1
+    tgw_peering_attachment_id = local.tgw_peering_id_us_west_1
+    tgw_route_table_id        = local.tgw_rt_id_us_west_1
   
 }

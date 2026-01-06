@@ -5,7 +5,7 @@ resource "aws_networkmanager_global_network" "this" {
   description = "Global Network view for TGWs (Network Manager)"
 
   tags = {
-    Name = "global-tgw-network"
+    Name = "global_tgw_network"
   }
 }
 
@@ -22,7 +22,7 @@ resource "aws_networkmanager_transit_gateway_registration" "us_west_1" {
   transit_gateway_arn = var.tgw_arn_us_west_1
 }
 
-resource "aws_networkmanager_transit_gateway_registration" "us-east-1" {
+resource "aws_networkmanager_transit_gateway_registration" "us_east_1" {
   global_network_id   = aws_networkmanager_global_network.this.id
   transit_gateway_arn = var.tgw_arn_us_east_1
 }

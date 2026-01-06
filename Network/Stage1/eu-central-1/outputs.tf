@@ -1,33 +1,33 @@
-output "vpc-1-id" {
-    value = module.vpc-1.vpc_id
-    description = "VPC-1 ID"
+output "vpc_1_id" {
+    value = module.vpc_1.vpc_id
+    description = "VPC_1 ID"
   
 }
 
-output "tgw-id" {
-    value = module.tgw.tgw-id
+output "tgw_id" {
+    value = module.tgw.tgw_id
     description = "TGW ID"
   
 }
 
-output "tgw-peering-id" {
-    value = module.tgw.tgw-peering-id
-    description = "TGW Peering ID between eu-central-1 and us-east-1"
+output "tgw_peering_id" {
+    value = module.tgw.tgw_peering_id
+    description = "TGW Peering ID between eu_central_1 and us_east_1"
   
 }
 
-output "tgw-rt-id" {
-    value = module.tgw.tgw-rt-id
+output "tgw_rt_id" {
+    value = module.tgw.tgw_rt_id
     description = "TGW Main RT ID"
   
 }
 
-output "vpc-cidr" {
-  value = module.vpc-1.vpc_cidr
+output "vpc_cidr" {
+  value = module.vpc_1.vpc_cidr
   description = "CIDR of VPC 1"
 }
 
-output "tgw-arn" {
-    value = module.tgw.tgw-arn
+output "tgw_arn" {
+    value = module.tgw.tgw_arn
   
 }

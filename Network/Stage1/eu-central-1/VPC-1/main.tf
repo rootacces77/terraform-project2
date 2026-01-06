@@ -4,7 +4,7 @@ resource "aws_vpc" "vpc_1" {
   enable_dns_hostnames = true
 
   tags = {
-    Name        = "VPC-1"
+    Name        = "VPC_1"
     Terraform   = "true"
   }
 }
@@ -13,7 +13,7 @@ resource "aws_internet_gateway" "vpc_1_igw" {
   vpc_id = aws_vpc.vpc_1.id
 
   tags = {
-    Name        = "VPC-1-IGW"
+    Name        = "VPC_1_IGW"
     Terraform   = "true"
   }
 }
@@ -23,19 +23,19 @@ resource "aws_internet_gateway" "vpc_1_igw" {
 ########################
 locals {
   vpc_1_public_subnets = {
-    "eu-central-1a" = "10.19.0.0/20"
-    "eu-central-1b" = "10.19.16.0/20"
-    "eu-central-1c" = "10.19.32.0/20"
+    "eu_central_1a" = "10.19.0.0/20"
+    "eu_central_1b" = "10.19.16.0/20"
+    "eu_central_1c" = "10.19.32.0/20"
   }
   vpc_1_vpn_subnets = {
-    "eu-central-1a" = "10.19.48.0/20"
-    "eu-central-1b" = "10.19.64.0/20"
-    "eu-central-1c" = "10.19.80.0/20"
+    "eu_central_1a" = "10.19.48.0/20"
+    "eu_central_1b" = "10.19.64.0/20"
+    "eu_central_1c" = "10.19.80.0/20"
   }
   vpc_1_private_subnets = {
-    "eu-central-1a" = "10.19.96.0/20"
-    "eu-central-1b" = "10.19.112.0/20"
-    "eu-central-1c" = "10.19.128.0/20"
+    "eu_central_1a" = "10.19.96.0/20"
+    "eu_central_1b" = "10.19.112.0/20"
+    "eu_central_1c" = "10.19.128.0/20"
   }
 }
 
@@ -52,7 +52,7 @@ resource "aws_subnet" "vpc_1_public" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name        = "VPC-1-SBNT-PUBLIC"
+    Name        = "VPC_1_SBNT_PUBLIC"
     Tier        = "PUBLIC"
     Terraform   = "true"
   }
@@ -65,7 +65,7 @@ resource "aws_route_table" "vpc_1_public_rt" {
   vpc_id = aws_vpc.vpc_1.id
 
   tags = {
-    Name        = "VPC-1-PUBLIC-RT"
+    Name        = "VPC_1_PUBLIC_RT"
     Terraform   = "true"
   }
 }
@@ -95,7 +95,7 @@ resource "aws_subnet" "vpc_1_vpn" {
   map_public_ip_on_launch = false
 
   tags = {
-    Name        = "VPC-1-SBNT-VPN"
+    Name        = "VPC_1_SBNT_VPN"
     Tier        = "VPN"
     Terraform   = "true"
   }
@@ -105,7 +105,7 @@ resource "aws_route_table" "vpc_1_vpn_rt" {
   vpc_id = aws_vpc.vpc_1.id
 
   tags = {
-    Name        = "VPC-1-VPN-RT"
+    Name        = "VPC_1_VPN_RT"
     Terraform   = "true"
   }
 }
@@ -131,7 +131,7 @@ resource "aws_subnet" "vpc_1_private" {
   map_public_ip_on_launch = false
 
   tags = {
-    Name        = "VPC-1-SBNT-PRIVATE"
+    Name        = "VPC_1_SBNT_PRIVATE"
     Tier        = "PRIVATE"
     Terraform   = "true"
   }
@@ -141,7 +141,7 @@ resource "aws_route_table" "vpc_1_private_rt" {
   vpc_id = aws_vpc.vpc_1.id
 
   tags = {
-    Name        = "VPC-1-PRIVATE-RT"
+    Name        = "VPC_1_PRIVATE_RT"
     Terraform   = "true"
   }
 }

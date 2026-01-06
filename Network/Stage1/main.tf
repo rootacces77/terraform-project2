@@ -1,37 +1,37 @@
-module "us-east-1" {
+module "us_east_1" {
 
     providers = {
-      aws = aws.us-east-1
+      aws = aws.us_east_1
     }
 
-    source = "./us-east-1"
+    source = "./us_east_1"
 
     prod_account_id = local.prod_account_id
   
 }
 
-module "us-west-1" {
+module "us_west_1" {
 
     providers = {
-      aws = aws.us-west-1
+      aws = aws.us_west_1
     }
-    source = "./us-west-1"
-    depends_on = [ module.us-east-1 ]
+    source = "./us_west_1"
+    depends_on = [ module.us_east_1 ]
 
     prod_account_id = local.prod_account_id
-    us-east-1-tgw-id = module.us-east-1.tgw-id
+    us_east_1_tgw_id = module.us_east_1.tgw_id
   
 }
 
-module "eu-central-1" {
+module "eu_central_1" {
 
     providers = {
-      aws = aws.eu-central-1
+      aws = aws.eu_central_1
     }
-    source = "./eu-central-1"
-    depends_on = [ module.us-west-1 ]
+    source = "./eu_central_1"
+    depends_on = [ module.us_west_1 ]
 
     prod_account_id = local.prod_account_id
-    us-east-1-tgw-id = module.us-east-1.tgw-id
+    us_east_1_tgw_id = module.us_east_1.tgw_id
   
 }

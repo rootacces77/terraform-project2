@@ -1,19 +1,19 @@
-variable "vpc-1-vpn-rt-id" {
+variable "vpc_1_vpn_rt_id" {
   
   type = string
-  description = "VPC-1 VPN RT ID"
+  description = "VPC_1 VPN RT ID"
 }
 
-variable "tgw-id" {
+variable "tgw_id" {
 
     type = string
     description = "ID of TGW"
   
 }
 
-variable "vpc-2-cidr" {
+variable "vpc_2_cidr" {
     
     type = string
-    description = "CIDR of VPC-2"
+    description = "CIDR of VPC_2"
   
 }

@@ -4,8 +4,8 @@ variable "prod_account_id" {
   
 }
 
-variable "us-east-1-tgw-id" {
+variable "us_east_1_tgw_id" {
     type = string
-    description = "US-EAST-1 TGW ID"
+    description = "US_EAST_1 TGW ID"
   
 }

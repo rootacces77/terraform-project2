@@ -2,7 +2,7 @@
 # Transit Gateway
 ############################################
 resource "aws_ec2_transit_gateway" "this" {
-  description                     = "${var.tgw-name}-tgw"
+  description                     = "${var.tgw_name}_tgw"
   amazon_side_asn                 = 64512
   auto_accept_shared_attachments  = "disable"
   default_route_table_association = "disable"
@@ -11,7 +11,7 @@ resource "aws_ec2_transit_gateway" "this" {
   vpn_ecmp_support                = "enable"
 
   tags = {
-    Name = "${var.tgw-name}-tgw"
+    Name = "${var.tgw_name}_tgw"
   }
 }
 
@@ -22,7 +22,7 @@ resource "aws_ec2_transit_gateway_route_table" "rt_main" {
   transit_gateway_id = aws_ec2_transit_gateway.this.id
 
   tags = {
-    Name = "${var.tgw-name}-tgw-rt-main"
+    Name = "${var.tgw_name}_tgw_rt_main"
   }
 }
 
@@ -30,7 +30,7 @@ resource "aws_ec2_transit_gateway_route_table" "rt_isolated" {
   transit_gateway_id = aws_ec2_transit_gateway.this.id
 
   tags = {
-    Name = "${var.tgw-name}-tgw-rt-isolated"
+    Name = "${var.tgw_name}_tgw_rt_isolated"
   }
 }
 
@@ -39,27 +39,27 @@ resource "aws_ec2_transit_gateway_route_table" "rt_isolated" {
 ############################################
 resource "aws_ec2_transit_gateway_vpc_attachment" "vpc_1" {
   transit_gateway_id = aws_ec2_transit_gateway.this.id
-  vpc_id             = var.vpc-1-id
-  subnet_ids         = var.vpc-1-subnet-ids
+  vpc_id             = var.vpc_1_id
+  subnet_ids         = var.vpc_1_subnet_ids
 
   dns_support  = "enable"
   ipv6_support = "disable"
 
   tags = {
-    Name = "${var.tgw-name}-attach-vpc-1"
+    Name = "${var.tgw_name}_attach_vpc_1"
   }
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "vpc_2" {
   transit_gateway_id = aws_ec2_transit_gateway.this.id
-  vpc_id             = var.vpc-2-id
-  subnet_ids         = var.vpc-2-subnet-ids
+  vpc_id             = var.vpc_2_id
+  subnet_ids         = var.vpc_2_subnet_ids
 
   dns_support  = "enable"
   ipv6_support = "disable"
 
   tags = {
-    Name = "${var.tgw-name}-attach-vpc-2"
+    Name = "${var.tgw_name}_attach_vpc_2"
   }
 }
 
@@ -67,13 +67,13 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "vpc_2" {
 # Associations (decide which TGW RT is used
 # for traffic COMING FROM each VPC)
 ############################################
-# VPC-A traffic uses rt_main (so A can route to B)
+# VPC_A traffic uses rt_main (so A can route to B)
 resource "aws_ec2_transit_gateway_route_table_association" "assoc_a" {
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.vpc_1.id
   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.rt_main.id
 }
 
-# VPC-B traffic uses rt_isolated (no routes => B can't reach others)
+# VPC_B traffic uses rt_isolated (no routes => B can't reach others)
 resource "aws_ec2_transit_gateway_route_table_association" "assoc_b" {
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.vpc_2.id
   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.rt_isolated.id
@@ -81,7 +81,7 @@ resource "aws_ec2_transit_gateway_route_table_association" "assoc_b" {
 
 ############################################
 # Propagation into rt_main (so rt_main learns
-# where VPC-B lives; you can also do static routes)
+# where VPC_B lives; you can also do static routes)
 ############################################
 resource "aws_ec2_transit_gateway_route_table_propagation" "prop_b_into_main" {
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.vpc_2.id
