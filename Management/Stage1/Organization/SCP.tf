@@ -34,7 +34,7 @@ resource "aws_organizations_policy" "deny_non_us_east_1" {
         Resource  = "*",
         Condition = {
           StringNotEquals = {
-            "aws:RequestedRegion" : [ "us-east-1","us-west-1","eu-central-1" ]
+            "aws:RequestedRegion" : [ "us-east-1","us-west-1","eu-central-1","us-west-2" ]
           }
         }
       }
