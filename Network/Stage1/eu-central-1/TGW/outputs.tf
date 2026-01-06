@@ -4,7 +4,7 @@ output "tgw-id" {
 }
 
 output "tgw-peering-id" {
-    value = aws_ec2_transit_gateway_peering_attachment.tgw-peering.id
+    value = aws_ec2_transit_gateway_peering_attachment.tgw_peering.id
     description = "TGW Peering ID between eu-central-1 and us-east-1"
   
 }

@@ -2,7 +2,7 @@
 # Transit Gateway
 ############################################
 resource "aws_ec2_transit_gateway" "this" {
-  description                     = "${var.name}-tgw"
+  description                     = "${var.tgw-name}-tgw"
   amazon_side_asn                 = 64512
   auto_accept_shared_attachments  = "disable"
   default_route_table_association = "disable"
@@ -11,7 +11,7 @@ resource "aws_ec2_transit_gateway" "this" {
   vpn_ecmp_support                = "enable"
 
   tags = {
-    Name = "${var.name}-tgw"
+    Name = "${var.tgw-name}-tgw"
   }
 }
 
@@ -22,7 +22,7 @@ resource "aws_ec2_transit_gateway_route_table" "rt_main" {
   transit_gateway_id = aws_ec2_transit_gateway.this.id
 
   tags = {
-    Name = "${var.name}-tgw-rt-main"
+    Name = "${var.tgw-name}-tgw-rt-main"
   }
 }
 
@@ -40,7 +40,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "vpc_1" {
   ipv6_support = "disable"
 
   tags = {
-    Name = "${var.name}-attach-vpc-1"
+    Name = "${var.tgw-name}-attach-vpc-1"
   }
 }
 
@@ -60,13 +60,13 @@ resource "aws_ec2_transit_gateway_route_table_association" "assoc_a" {
 ############################################
 # TGW Attachments (eu-central-1 -> us-east-1)
 ############################################
-resource "aws_ec2_transit_gateway_peering_attachment" "tgw-peering" {
+resource "aws_ec2_transit_gateway_peering_attachment" "tgw_peering" {
   transit_gateway_id      = aws_ec2_transit_gateway.this.id
   peer_transit_gateway_id = var.us-east-1-tgw-id
   peer_region             = var.region-name
 
 
   tags = {
-    Name = "${var.name}-attach-${var.region-name}-tgw"
+    Name = "${var.tgw-name}-attach-${var.region-name}-tgw"
   }
 }
