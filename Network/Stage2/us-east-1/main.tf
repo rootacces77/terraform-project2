@@ -20,7 +20,7 @@ module "routes" {
   
 }
 
-/*
+
 module "NetworkManager" {
     source = "./NetworkManager"
     
@@ -28,4 +28,4 @@ module "NetworkManager" {
     tgw_arn_us_east_1 = var.tgw_arn_us_east_1
     tgw_arn_us_west_1 = var.tgw_arn_us_west_1
 
-} */
+} 
