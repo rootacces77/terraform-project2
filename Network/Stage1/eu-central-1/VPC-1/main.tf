@@ -58,25 +58,6 @@ resource "aws_subnet" "vpc_1_public" {
   }
 }
 
-#NAT
-
-resource "aws_eip" "nat" {
-  domain = "vpc"
-
-  tags = {
-    Name = "nat-eip"
-  }
-}
-
-resource "aws_nat_gateway" "nat" {
-  allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.vpc_1_public["us-central-1a"].id
-
-  tags = {
-    Name = "nat-gw-public-1"
-  }
-}
-
 
 
 #RT
@@ -163,13 +144,6 @@ resource "aws_route_table" "vpc_1_private_rt" {
     Name        = "VPC-1-PRIVATE-RT"
     Terraform   = "true"
   }
-}
-
-
-resource "aws_route" "private_nat_route" {
-  route_table_id         = aws_route_table.vpc_1_private_rt.id
-  destination_cidr_block = "0.0.0.0/0"
-  nat_gateway_id         = aws_nat_gateway.nat.id
 }
 
 resource "aws_route_table_association" "vpc_1_private_rt" {
