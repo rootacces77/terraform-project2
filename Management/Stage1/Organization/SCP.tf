@@ -28,7 +28,8 @@ resource "aws_organizations_policy" "deny_non_us_east_1" {
           "wafv2:*",
           "shield:*",
           "health:*",
-          "networkmanager:*"
+          "networkmanager:*",
+          "account:*"
         ],
         Resource  = "*",
         Condition = {
