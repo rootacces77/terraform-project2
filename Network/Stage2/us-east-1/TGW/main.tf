@@ -23,14 +23,16 @@ resource "aws_ec2_transit_gateway_route_table_association" "peer_assoc_us-west-1
   transit_gateway_route_table_id = var.tgw-rt-id
 }
 
-#PROPAGATE EU-CENTRAL-1 INTO MAIN ROUTE TABLE
-resource "aws_ec2_transit_gateway_route_table_propagation" "prop-eu-central-1" {
-  transit_gateway_attachment_id  = var.tgw-peering-id-eu-central-1
+# us-east-1 TGW RT: route to EU Central VPC CIDR via EU peering attachment
+resource "aws_ec2_transit_gateway_route" "to_eu_central_1" {
   transit_gateway_route_table_id = var.tgw-rt-id
+  destination_cidr_block         = var.vpc-eu-central-1-cidr
+  transit_gateway_attachment_id  = var.tgw-peering-id-eu-central-1
 }
 
-#PROPAGATE US-WEST-1 INTO MAIN ROUTE TABLE
-resource "aws_ec2_transit_gateway_route_table_propagation" "prop-us-west-1" {
-  transit_gateway_attachment_id  = var.tgw-peering-id-us-west-1
+# us-east-1 TGW RT: route to us-west-1 VPC CIDR via us-west peering attachment
+resource "aws_ec2_transit_gateway_route" "to_us_west_1" {
   transit_gateway_route_table_id = var.tgw-rt-id
+  destination_cidr_block         = var.vpc-us-west-1-cidr
+  transit_gateway_attachment_id  = var.tgw-peering-id-us-west-1
 }
