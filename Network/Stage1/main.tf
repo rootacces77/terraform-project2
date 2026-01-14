@@ -4,7 +4,7 @@ module "us_east_1" {
       aws = aws.us_east_1
     }
 
-    source = "./us_east_1"
+    source = "./us-east-1"
 
     prod_account_id = local.prod_account_id
   

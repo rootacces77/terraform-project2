@@ -1,3 +1,3 @@
 # Currently working on
 
-![Alt text](diagram/project2.png)
+![Alt text](diagram/project2.pdf)
