@@ -23,19 +23,19 @@ resource "aws_internet_gateway" "vpc_1_igw" {
 ########################
 locals {
   vpc_1_public_subnets = {
-    "us_east_1a" = "10.16.0.0/20"
-    "us_east_1b" = "10.16.16.0/20"
-    "us_east_1c" = "10.16.32.0/20"
+    "us-east-1a" = "10.16.0.0/20"
+    "us-east-1b" = "10.16.16.0/20"
+    "us-east-1c" = "10.16.32.0/20"
   }
   vpc_1_vpn_subnets = {
-    "us_east_1a" = "10.16.48.0/20"
-    "us_east_1b" = "10.16.64.0/20"
-    "us_east_1c" = "10.16.80.0/20"
+    "us-east-1a" = "10.16.48.0/20"
+    "us-east-1b" = "10.16.64.0/20"
+    "us-east-1c" = "10.16.80.0/20"
   }
   vpc_1_private_subnets = {
-    "us_east_1a" = "10.16.96.0/20"
-    "us_east_1b" = "10.16.112.0/20"
-    "us_east_1c" = "10.16.128.0/20"
+    "us-east-1a" = "10.16.96.0/20"
+    "us-east-1b" = "10.16.112.0/20"
+    "us-east-1c" = "10.16.128.0/20"
   }
 }
 
