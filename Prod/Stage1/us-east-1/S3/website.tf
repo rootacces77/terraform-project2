@@ -52,6 +52,6 @@ resource "aws_s3_object" "website" {
   source = "${local.website_dir}/${each.value}"
 
   # Ensures changes trigger re-upload
-  etag = filemd5("${local.website_dir}/${each.value}")
+  # etag = filemd5("${local.website_dir}/${each.value}")
 
 }
