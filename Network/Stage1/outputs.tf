@@ -1,3 +1,4 @@
+/*
 output "tgw_peering_id_eu_central_1" {
     value = module.eu_central_1.tgw_peering_id
     description = "TGW Peering ID between eu_central_1 and us_east_1"
@@ -61,3 +62,4 @@ output "tgw_id_us_east_1" {
 output "tgw_rt_id_us_east_1" {
     value = module.us_east_1.tgw_rt_id
 }
+*/
