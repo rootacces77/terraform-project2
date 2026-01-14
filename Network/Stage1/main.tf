@@ -1,7 +1,7 @@
 module "us_east_1" {
 
     providers = {
-      aws = aws.us_east_1
+      aws = aws.us-east-1
     }
 
     source = "./us-east-1"
