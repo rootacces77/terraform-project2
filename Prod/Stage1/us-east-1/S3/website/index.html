@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Input → API Gateway → Lambda</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Submit Input</h1>
+        <p class="sub">
+          This static page sends your input to API Gateway, which forwards it to a Lambda function.
+        </p>
+      </header>
+
+      <section class="card">
+        <form id="inputForm" class="form">
+          <label for="userInput" class="label">Enter text</label>
+
+          <div class="row">
+            <input
+              id="userInput"
+              name="userInput"
+              class="input"
+              type="text"
+              placeholder="Type something..."
+              autocomplete="off"
+              required
+              minlength="1"
+              maxlength="500"
+            />
+            <button id="submitBtn" class="button" type="submit">
+              Send
+            </button>
+          </div>
+
+          <div class="meta">
+            <span id="status" class="status">Idle</span>
+            <span id="hint" class="hint">Tip: Keep it under 500 characters.</span>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Response</h2>
+        <pre id="responseBox" class="response" aria-live="polite">{}</pre>
+      </section>
+
+      <footer class="footer">
+        <small>Designed for S3 + CloudFront hosting.</small>
+      </footer>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

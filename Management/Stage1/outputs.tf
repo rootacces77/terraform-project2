@@ -24,3 +24,7 @@ output "network_account_id" {
   description = "Network Account ID"
 }
 
+output "domain_zone_id" {
+  value = data.aws_route53_zone.main.zone_id
+  description = "Domain Zone ID"
+}

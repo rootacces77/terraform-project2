@@ -10,6 +10,7 @@ module "us_east_1" {
   
 }
 
+/*
 module "us_west_1" {
 
     providers = {
@@ -35,3 +36,4 @@ module "eu_central_1" {
     us_east_1_tgw_id = module.us_east_1.tgw_id
   
 }
+*/
