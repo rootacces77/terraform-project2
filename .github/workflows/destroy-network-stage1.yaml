@@ -1,4 +1,4 @@
-name: Terraform Destroy (Network)
+name: Terraform Destroy (Network Stage1)
 
 on:
   workflow_dispatch:   # manual trigger in GitHub UI
