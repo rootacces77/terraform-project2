@@ -1,9 +1,9 @@
 module "vpc_1" {
-  source = "./VPC_1"
+  source = "./VPC-1"
 }
 
 module "vpc_2" {
-    source = "./VPC_2"
+    source = "./VPC-2"
   
 }
 
