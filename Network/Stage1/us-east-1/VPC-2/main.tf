@@ -23,19 +23,19 @@ resource "aws_internet_gateway" "vpc_2_igw" {
 ########################
 locals {
   vpc_2_public_subnets = {
-    "us_east_1a" = "10.17.0.0/20"
-    "us_east_1b" = "10.17.16.0/20"
-    "us_east_1c" = "10.17.32.0/20"
+    "us-east-1a" = "10.17.0.0/20"
+    "us-east-1b" = "10.17.16.0/20"
+    "us-east-1c" = "10.17.32.0/20"
   }
   vpc_2_private1_subnets = {
-    "us_east_1a" = "10.17.48.0/20"
-    "us_east_1b" = "10.17.64.0/20"
-    "us_east_1c" = "10.17.80.0/20"
+    "us-east-1a" = "10.17.48.0/20"
+    "us-east-1b" = "10.17.64.0/20"
+    "us-east-1c" = "10.17.80.0/20"
   }
   vpc_2_private2_subnets = {
-    "us_east_1a" = "10.17.96.0/20"
-    "us_east_1b" = "10.17.112.0/20"
-    "us_east_1c" = "10.17.128.0/20"
+    "us-east-1a" = "10.17.96.0/20"
+    "us-east-1b" = "10.17.112.0/20"
+    "us-east-1c" = "10.17.128.0/20"
   }
 }
 
@@ -70,7 +70,7 @@ resource "aws_eip" "nat" {
 
 resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.vpc_2_public["us_east_1a"].id
+  subnet_id     = aws_subnet.vpc_2_public["us-east-1a"].id
 
   tags = {
     Name = "nat_gw_public_1"
