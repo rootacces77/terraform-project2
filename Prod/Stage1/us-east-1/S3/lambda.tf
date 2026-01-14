@@ -39,13 +39,13 @@ module "lambda_bucket" {
 
 resource "aws_s3_object" "lambda" {
   for_each = {
-    for f in local.website_files :
+    for f in local.lambda_files :
     f => f
     # Exclude "directories" if any tooling produces them (rare with fileset)
     if !endswith(f, "/")
   }
 
-  bucket = module.static_site_bucket.s3_bucket_id
+  bucket = module.lambda_bucket.s3_bucket_id
 
   # Keep directory structure in S3
   key    = each.value
