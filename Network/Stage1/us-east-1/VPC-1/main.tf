@@ -70,7 +70,7 @@ resource "aws_eip" "nat" {
 
 resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.vpc_1_public["us_east_1a"].id
+  subnet_id     = aws_subnet.vpc_1_public["us-east-1a"].id
 
   tags = {
     Name = "nat_gw_public_1"
