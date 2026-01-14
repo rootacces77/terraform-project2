@@ -22,6 +22,8 @@ module "tgw" {
 module "routes" {
     source = "./ROUTES"
 
+    depends_on = [ module.tgw ]
+
     tgw_id = module.tgw.tgw_id
 
     vpc_1_vpn_rt_id = module.vpc_1.vpc1_vpn_rt_id
