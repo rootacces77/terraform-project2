@@ -25,7 +25,7 @@ module "lambda" {
     apigw_origin_verify_secret      = var.apigw_origin_verify_secret
 
     lambda_bucket_name              = module.s3.lambda_bucket_name
-    lambda_zip_path                 = "/lambda.zip"
+    lambda_zip_path                 = "lambda.zip"
 
 
   
