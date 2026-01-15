@@ -52,6 +52,6 @@ resource "aws_s3_object" "lambda" {
   source = "${local.lambda_dir}/${each.value}"
 
   # Ensures changes trigger re-upload
-  # etag = filemd5("${local.lambda_dir}/${each.value}")
+  etag = filemd5("${local.lambda_dir}/${each.value}")
 
 }
