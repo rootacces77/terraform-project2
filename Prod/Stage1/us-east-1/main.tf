@@ -44,7 +44,7 @@ module "cf" {
 
     acm_certificate_arn                   = module.acm.cert_arn
 
-    s3_cf_origin_arn                      = module.s3.s3_cf_origin_id
+    s3_cf_origin_arn                      = module.s3.s3_cf_origin_arn
     s3_cf_origin_id                       = module.s3.s3_cf_origin_id
     s3_origin_bucket_regional_domain_name = module.s3.s3_cf_origin_regional_domain_name
 
