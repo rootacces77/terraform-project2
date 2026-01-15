@@ -2,7 +2,7 @@ data "terraform_remote_state" "management" {
   backend = "s3"
   config = {
     bucket = "tf-state-project-practice77"
-    key    = "accounts/management/terraform.tfstate" # adjust path
+    key    = "accounts/management/terraform.tfstate"
     region = "us-east-1"
   }
 }

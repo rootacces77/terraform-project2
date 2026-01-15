@@ -1,5 +1,5 @@
 locals {
-    apex_domain = "project-practice77.com"
+    apex_domain = "project-practice.com"
     www_domain  = "www.${local.apex_domain}"
 }
 
