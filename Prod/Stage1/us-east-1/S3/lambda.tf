@@ -30,7 +30,7 @@ module "lambda_bucket" {
   # Optional: serve index.html / error.html via CloudFront (recommended approach)
   # NOTE: This does NOT create a public "website endpoint"; CloudFront will request objects like /index.html
   tags = {
-    Name        = "static_website"
+    Name        = "lambda-bucket"
     Environment = "PROD"
     Terraform   = "true"
   }

@@ -22,3 +22,7 @@ output "network_account_id" {
   description = "Network Account ID"
 }
 
+output "prod_route53_role_arn" {
+  value = aws_iam_role.prod_route53_writer.arn
+  description = "ARN of role to allow Route53 certifications validation"
+}

@@ -21,7 +21,7 @@ resource "aws_acm_certificate" "prod_app" {
 
 # CREATE DNS VALIDATION RECORD(S) IN MANAGEMENT USING ASSUMED ROLE
 resource "aws_route53_record" "prod_app_validation" {
-  provider = aws.management
+  provider = aws.mgmt_dns
 
   # Turn the set(domain_validation_options) into a map keyed by domain_name
   for_each = {
