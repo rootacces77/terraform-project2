@@ -49,7 +49,7 @@ form.addEventListener("submit", async (e) => {
   setStatus("Sending...", null);
   responseBox.textContent = "{}";
 
-  const url = `${API_BASE_URL}${API_PATH}`;
+  const url = `${API_PATH}`;
 
   try {
     const res = await fetch(url, {
