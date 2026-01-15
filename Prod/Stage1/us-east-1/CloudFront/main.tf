@@ -12,6 +12,15 @@ resource "aws_cloudfront_origin_access_control" "s3_oac" {
 ############################
 # CloudFront Distribution
 ############################
+
+data "aws_cloudfront_cache_policy" "caching_disabled" {
+  name = "Managed-CachingDisabled"
+}
+
+data "aws_cloudfront_origin_request_policy" "all_viewer_except_host" {
+  name = "Managed-AllViewerExceptHostHeader"
+}
+
 resource "aws_cloudfront_distribution" "this" {
   enabled         = true
   is_ipv6_enabled = true
@@ -56,6 +65,21 @@ resource "aws_cloudfront_distribution" "this" {
       origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
+
+  ordered_cache_behavior {
+    path_pattern     = "/submit*"
+    target_origin_id = "apigw-origin"
+
+    viewer_protocol_policy = "https-only"
+    compress               = true
+
+    allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
+    cached_methods  = ["GET", "HEAD"]
+
+    cache_policy_id          = data.aws_cloudfront_cache_policy.caching_disabled.id
+    origin_request_policy_id = data.aws_cloudfront_origin_request_policy.all_viewer_except_host.id
+  }
+
 
   default_cache_behavior {
     target_origin_id       = "s3-origin"
