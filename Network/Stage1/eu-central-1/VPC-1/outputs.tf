@@ -4,7 +4,7 @@ output "vpc_id" {
 }
 
 output "vpc_1_private1_subnets" {
-  value = [for s in aws_subnet.vpc_1_vpn : s.arn]
+  value = [for s in aws_subnet.vpc_1_private1 : s.arn]
   description = "ARN of ClientVPN Subnets"
 }
 
@@ -14,7 +14,7 @@ output "vpc_1_public_subnets" {
 }
 
 output "vpc_1_private2_subnets" {
-  value = [for s in aws_subnet.vpc_1_private : s.arn]
+  value = [for s in aws_subnet.vpc_1_private2: s.arn]
   description = "ARN of Private Subnets"
 }
 
@@ -30,20 +30,20 @@ output "vpc_1_public_subnets_ids" {
   
 }
 
-output "vpc_1_private_subnets_ids" {
-  value =  [for s in aws_subnet.vpc_1_private : s.id]
+output "vpc_1_private2_subnets_ids" {
+  value =  [for s in aws_subnet.vpc_1_private2 : s.id]
   description = "ID's of Private Subnets "
   
 }
 
-output "vpc_1_vpn_subnets_ids" {
-  value =  [for s in aws_subnet.vpc_1_vpn : s.id]
+output "vpc_1_private1_subnets_ids" {
+  value =  [for s in aws_subnet.vpc_1_private1 : s.id]
   description = "ID's of ClientVPN Subnets "
   
 }
 
-output "vpc1_vpn_rt_id" {
-  value = aws_route_table.vpc_1_vpn_rt.id
-  description = "ID of VPC_1 VPN Subnet RT "
+output "vpc1_private1_rt_id" {
+  value = aws_route_table.vpc_1_private1_rt
+  description = "ID of VPC_1 Private 1 Subnet RT "
   
 }

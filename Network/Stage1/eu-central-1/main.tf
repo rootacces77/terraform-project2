@@ -1,5 +1,5 @@
 module "vpc_1" {
-  source = "./VPC_1"
+  source = "./VPC-1"
 }
 
 module "tgw" {
@@ -10,7 +10,7 @@ module "tgw" {
     vpc_1_id = module.vpc_1.vpc_id
     us_east_1_tgw_id = var.us_east_1_tgw_id
 
-    vpc_1_subnet_ids = module.vpc_1.vpc_1_vpn_subnets_ids
+    vpc_1_subnet_ids = module.vpc_1.vpc_1_private1_subnets_ids
 }
 
 module "ram" {
