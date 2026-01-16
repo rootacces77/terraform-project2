@@ -1,5 +1,5 @@
 
-#CREATE AND VALIDATE CERTIFICATE THAT WILL BE USED BY ALB AND CF
+#CREATE AND VALIDATE CERTIFICATE THAT WILL BE USED BY CF
 resource "aws_acm_certificate" "prod_app" {
   domain_name               =  local.apex_domain
   subject_alternative_names = [local.www_domain]
