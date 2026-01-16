@@ -15,7 +15,7 @@ module "lambda" {
     kinesis_streamA_arn = module.kinesis.kinesis_steam_A_arn
     kinesis_streamB_arn = module.kinesis.kinesis_steam_B_arn
 
-    lambda_bucket_name  = module.s3.lambda_s3_arn
+    lambda_bucket_name  = module.s3.lambda_s3_bucket_name
 
     lambdaA_zip_path    = "lambdaA.zip"
     lambdaB_zip_path    = "lambdaB.zip"
