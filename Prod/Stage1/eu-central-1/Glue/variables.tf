@@ -1,7 +1,7 @@
 locals {
   glue_s3_targets = [
-    "s3://${var.destA_bucket_name}/lambdaA/",
-    "s3://${var.destB_bucket_name}/lambdaB/"
+    "s3://${var.destA_bucket_name}/prefix2026/",
+    "s3://${var.destB_bucket_name}/prefix2026/"
   ]
 }
 
