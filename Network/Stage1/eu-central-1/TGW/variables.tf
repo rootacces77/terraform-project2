@@ -25,6 +25,6 @@ variable "us_east_1_tgw_id" {
 variable "region_name" {
     type = string
     description = "TGW Peering attachment region id"
-    default = "us_east_1"
+    default = "us-east-1"
   
 }
