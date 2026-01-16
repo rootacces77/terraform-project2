@@ -2,7 +2,7 @@ module "destB_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "~> 4.0"
 
-  bucket        = "destB-bucket-1231412456"
+  bucket        = "dest-b-bucket-1231412456"
   force_destroy = true
 
   # Recommended when using CloudFront as the only public entry point
