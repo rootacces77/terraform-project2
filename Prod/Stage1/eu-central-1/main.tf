@@ -12,8 +12,8 @@ module "kinesis" {
 module "lambda" {
     source = "./Lambda"
 
-    kinesis_streamA_arn = module.kinesis.kinesis_steam_A_arn
-    kinesis_streamB_arn = module.kinesis.kinesis_steam_B_arn
+    kinesis_streamA_arn = module.kinesis.kinesis_stream_A_arn
+    kinesis_streamB_arn = module.kinesis.kinesis_stream_B_arn
 
     kinesis_streamA_name = module.kinesis.kinesis_stream_A_name
     kinesis_streamB_name = module.kinesis.kinesis_stream_B_name
@@ -42,8 +42,8 @@ module "firehose" {
     bucket_A_arn         = module.s3.destA_s3_arn
     bucket_B_arn         = module.s3.destB_s3_arn
 
-    kinesis_stream_a_arn = module.kinesis.kinesis_steam_A_arn
-    kinesis_stream_b_arn = module.kinesis.kinesis_steam_B_arn
+    kinesis_stream_a_arn = module.kinesis.kinesis_stream_A_arn
+    kinesis_stream_b_arn = module.kinesis.kinesis_stream_B_arn
 
 
   
