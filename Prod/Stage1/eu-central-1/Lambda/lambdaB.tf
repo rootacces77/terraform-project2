@@ -16,7 +16,7 @@ resource "aws_lambda_function" "writerB" {
 
   environment {
     variables = {
-       STREAM_NAME = var.kinesis_streamB_arn
+       STREAM_NAME = var.kinesis_streamB_name
     }
   }
 

@@ -32,3 +32,15 @@ variable "kinesis_streamB_arn" {
     description = "Kinesis StreamB ARN"
   
 }
+
+variable "kinesis_streamA_name" {
+    type = string
+    description = "Kinesis StreamA Name"
+  
+}
+
+variable "kinesis_streamB_name" {
+    type = string
+    description = "Kinesis StreamB Name"
+  
+}

@@ -1,3 +1,11 @@
+locals {
+  glue_s3_targets = [
+    "s3://${var.destA_bucket_name}/lambdaA/",
+    "s3://${var.destB_bucket_name}/lambdaB/"
+  ]
+}
+
+
 variable "glue_database_name" {
     type = string
     description = "Name of Glue database"
@@ -5,14 +13,18 @@ variable "glue_database_name" {
   
 }
 
-variable "s3_targets" {
-    type = list(string)
-    description = "S3 URI's"
-  
-}
-
 variable "s3_bucket_names" {
     type = list(string)
     description = "List of S3 bucket names"
+  
+}
+
+variable "destA_bucket_name" {
+    type = string
+  
+}
+
+variable "destB_bucket_name" {
+    type = string
   
 }

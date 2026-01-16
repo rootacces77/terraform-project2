@@ -17,3 +17,13 @@ output "destB_s3_arn" {
     value = module.destB_bucket.s3_bucket_arn
   
 }
+
+output "destA_s3_bucket_name" {
+    value = module.destA_bucket.s3_bucket_id
+  
+}
+
+output "destB_s3_bucket_name" {
+    value = module.destB_bucket.s3_bucket_id
+  
+}

@@ -23,7 +23,7 @@ resource "aws_glue_crawler" "athena" {
 
   # One or more S3 targets
   dynamic "s3_target" {
-    for_each = var.s3_targets
+    for_each = local.glue_s3_targets
     content {
       path = s3_target.value
     }
