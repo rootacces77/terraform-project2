@@ -4,6 +4,6 @@ output "kinesis_steam_A_arn" {
 }
 
 output "kinesis_steam_B_arn" {
-    value = aws_kinesis_stream.lambdaB
+    value = aws_kinesis_stream.lambdaB.arn
   
 }
