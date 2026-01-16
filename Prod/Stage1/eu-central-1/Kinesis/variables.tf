@@ -1,14 +1,14 @@
 variable "kinesis_streamA_name" {
     type = string
     description = "STREAM-A-NAME"
-    default = "STREAM A"
+    default = "STREAM-A"
   
 }
 
 variable "kinesis_streamB_name" {
     type = string
     description = "STREAM-B-NAME"
-    default = "STREAM B"
+    default = "STREAM-B"
   
 }
 
