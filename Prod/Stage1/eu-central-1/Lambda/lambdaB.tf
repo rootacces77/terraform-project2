@@ -7,7 +7,7 @@ resource "aws_lambda_function" "writerB" {
   role          = aws_iam_role.lambda_exec.arn
 
   runtime = "python3.12"
-  handler = "lambda.handler" # because your file is lambda.py and function is handler()
+  handler = "lambdaB.handler" # because your file is lambdaB.py and function is handler()
 
   # Code from S3 (must be a ZIP)
   s3_bucket         = var.lambda_bucket_name
