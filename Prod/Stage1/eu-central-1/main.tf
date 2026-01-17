@@ -52,7 +52,7 @@ module "firehose" {
 module "glue" {
     source = "./Glue"
 
-    s3_bucket_names = [module.s3.destA_s3_bucket_name]
+    s3_bucket_names = [module.s3.destA_s3_bucket_name,module.s3.destB_s3_bucket_name]
 
     destA_bucket_name = module.s3.destA_s3_bucket_name
     destB_bucket_name = module.s3.destB_s3_bucket_name
