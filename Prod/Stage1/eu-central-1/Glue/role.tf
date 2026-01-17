@@ -39,24 +39,7 @@ data "aws_iam_policy_document" "glue_crawler_policy" {
   statement {
     sid    = "AllowGlueAndLogs"
     effect = "Allow"
-    actions = [
-      "glue:GetDatabase",
-      "glue:GetDatabases",
-      "glue:CreateTable",
-      "glue:UpdateTable",
-      "glue:GetTable",
-      "glue:GetTables",
-      "glue:GetPartition",
-      "glue:GetPartitions",
-      "glue:CreatePartition",
-      "glue:UpdatePartition",
-      "glue:BatchCreatePartition",
-      "glue:BatchUpdatePartition",
-      "glue:DeleteTable",
-      "logs:CreateLogGroup",
-      "logs:CreateLogStream",
-      "logs:PutLogEvents"
-    ]
+    actions = ["*"]
     resources = ["*"]
   }
 }
