@@ -31,10 +31,20 @@ variable "server_certificate_arn" {
   description = "ACM ARN for the server certificate (must be in same region)"
 }
 
+/*
+
 variable "client_root_certificate_chain_pem_path" {
   type        = string
   description = "Path to client root CA cert PEM (ca.crt) used for mutual auth"
 }
+
+variable "client_root_ca_key_path" {
+  type        = string
+  description = "Path to client root CA private key PEM (ca.key) - KEEP SECRET"
+  sensitive   = true
+}
+
+*/
 
 variable "vpn_endpoint_security_group_id" {
   type        = string
@@ -51,4 +61,9 @@ variable "transport_protocol" {
   description = "UDP or TCP"
   default     = "udp"
 
+}
+
+variable "client_root_ca_arn" {
+    type = string
+  
 }

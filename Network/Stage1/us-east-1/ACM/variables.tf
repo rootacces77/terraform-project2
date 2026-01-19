@@ -2,7 +2,8 @@
 locals {
   server_cert_path  = "${path.module}/ClientVPNCerts/server.crt"
   server_key_path   = "${path.module}/ClientVPNCerts/server.key"
-  server_chain_path = "${path.module}/ClientVPNCerts/ca.crt"
+  server_chain_path         = "${path.module}/ClientVPNCerts/ca.crt"
+  client_root_ca_key_path       = "${path.module}/ClientVPNCerts/ca.key"
 
 }
 
