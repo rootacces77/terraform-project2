@@ -53,7 +53,7 @@ module "clientvpn" {
     vpn_endpoint_security_group_id         = module.vpc_1.vpn_sg_id
 
     server_certificate_arn                 = module.acm.clientvpn_server_acm_arn
-    client_root_certificate_chain_pem_path = module.acm.vpn_certificate_chain
+    client_root_certificate_chain_pem_path = "${path.module}/ClientVPNCerts/ca.crt"
 
 
   

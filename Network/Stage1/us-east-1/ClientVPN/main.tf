@@ -24,7 +24,7 @@ resource "aws_ec2_client_vpn_endpoint" "this" {
 
   authentication_options {
     type                       = "certificate-authentication"
-    root_certificate_chain_arn = var.client_root_certificate_chain_pem_path
+    root_certificate_chain_arn = aws_acm_certificate.client_root_ca.arn
   }
 
   connection_log_options {
@@ -42,14 +42,14 @@ resource "aws_ec2_client_vpn_endpoint" "this" {
 # This is REQUIRED by aws_ec2_client_vpn_endpoint.authentication_options.root_certificate_chain_arn.
 # Note: This is *not* your server cert; it's the CA cert used to validate client certs.
 
-/*resource "aws_acm_certificate" "client_root_ca" {
+resource "aws_acm_certificate" "client_root_ca" {
   certificate_body = file(var.client_root_certificate_chain_pem_path)
 
   tags = {
     Name = "${var.name}-client-root-ca"
   }
 }
-*/
+
 
 # Associate endpoint with subnets (1+). Usually 2 for HA.
 resource "aws_ec2_client_vpn_network_association" "assoc" {
