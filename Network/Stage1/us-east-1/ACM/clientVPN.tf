@@ -11,3 +11,4 @@ resource "aws_acm_certificate" "clientvpn_server" {
     create_before_destroy = false
   }
 }
+
