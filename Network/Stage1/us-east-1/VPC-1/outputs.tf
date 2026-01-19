@@ -47,3 +47,7 @@ output "vpc1_vpn_rt_id" {
   description = "ID of VPC_1 VPN Subnet RT "
   
 }
+
+output "vpn_sg_id" {
+  value = aws_security_group.vpn.id
+}

@@ -39,3 +39,22 @@ module "ram" {
     vpc_2_subnet_arns = tolist(flatten([module.vpc_2.vpc_2_private1_subnets,module.vpc_2.vpc_2_private2_subnets,module.vpc_2.vpc_2_public_subnets]))
   
 }
+
+module "acm" {
+    source = "./ACM"
+
+}
+
+module "clientvpn" {
+    source = "./ClientVPN"
+
+    vpc_id                                 = module.vpc_1.vpc_id
+    associated_subnet_ids                  = module.vpc_1.vpc_1_vpn_subnets_ids
+    vpn_endpoint_security_group_id         = module.vpc_1.vpn_sg_id
+
+    server_certificate_arn                 = module.acm.clientvpn_server_acm_arn
+    client_root_certificate_chain_pem_path = file("${path.module}/ClientVPNCerts/ca.crt")
+
+
+  
+}
