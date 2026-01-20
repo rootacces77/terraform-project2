@@ -57,11 +57,13 @@ resource "aws_ec2_client_vpn_network_association" "assoc" {
 
 # Routes: allow clients to reach VPC CIDR via each associated subnet (keeps it simple + HA-friendly)
 resource "aws_ec2_client_vpn_route" "to_vpc" {
-  for_each               = aws_ec2_client_vpn_network_association.assoc
+#  for_each               = aws_ec2_client_vpn_network_association.assoc
+  count                 = length(aws_ec2_client_vpn_network_association.assoc)
   client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.this.id
 
   destination_cidr_block = var.vpc_target_cidr
-  target_vpc_subnet_id   = each.value.subnet_id
+ # target_vpc_subnet_id   = each.value.subnet_id
+  target_vpc_subnet_id   = aws_ec2_client_vpn_network_association.assoc[count.index].subnet_id
   description            = "Route to VPC CIDR ${var.vpc_target_cidr}"
 }
 
