@@ -7,6 +7,7 @@ module "vpc_2" {
   
 }
 
+
 module "tgw" {
     source = "./TGW"
 

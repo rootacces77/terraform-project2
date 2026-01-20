@@ -1,5 +1,6 @@
-basicConstraints = CA:FALSE
-keyUsage = critical, digitalSignature, keyEncipherment
-extendedKeyUsage = serverAuth
+        basicConstraints = CA:FALSE
+        keyUsage = critical, digitalSignature, keyEncipherment
+        extendedKeyUsage = serverAuth
+        subjectAltName = DNS:vpn.internal
 subjectKeyIdentifier = hash
-authorityKeyIdentifier = keyid,issuer
+        authorityKeyIdentifier = keyid,issuer
