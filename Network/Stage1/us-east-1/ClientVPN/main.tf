@@ -46,9 +46,13 @@ resource "aws_ec2_client_vpn_endpoint" "this" {
 
 # Associate endpoint with subnets (1+). Usually 2 for HA.
 resource "aws_ec2_client_vpn_network_association" "assoc" {
-  for_each               = toset(var.associated_subnet_ids)
-  client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.this.id
-  subnet_id              = each.value
+  #for_each               = toset(var.associated_subnet_ids)
+  #client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.this.id
+  #subnet_id              = each.value
+
+    count                 = length(var.associated_subnet_ids)
+    client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.this.id
+    subnet_id              = var.associated_subnet_ids[count.index]
 }
 
 # Routes: allow clients to reach VPC CIDR via each associated subnet (keeps it simple + HA-friendly)
