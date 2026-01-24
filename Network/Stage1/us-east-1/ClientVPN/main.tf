@@ -55,6 +55,7 @@ resource "aws_ec2_client_vpn_network_association" "assoc" {
     subnet_id              = var.associated_subnet_ids[count.index]
 }
 
+/*
 # Routes: allow clients to reach VPC CIDR via each associated subnet (keeps it simple + HA-friendly)
 resource "aws_ec2_client_vpn_route" "to_vpc" {
 #  for_each               = aws_ec2_client_vpn_network_association.assoc
@@ -66,6 +67,7 @@ resource "aws_ec2_client_vpn_route" "to_vpc" {
   target_vpc_subnet_id   = aws_ec2_client_vpn_network_association.assoc[count.index].subnet_id
   description            = "Route to VPC CIDR ${var.vpc_target_cidr}"
 }
+*/
 
 # Authorization: allow access to VPC CIDR (All groups). This is the usual starting point for mutual cert.
 resource "aws_ec2_client_vpn_authorization_rule" "allow_vpc" {

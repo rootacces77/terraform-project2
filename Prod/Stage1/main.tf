@@ -21,3 +21,13 @@ module "eu-central-1" {
   
 }
 */
+
+module "us-west-1" {
+  source = "./us-west-1"
+
+    providers = {
+      aws = aws.us-west-1
+    }  
+  
+  
+}

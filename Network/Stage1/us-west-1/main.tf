@@ -22,3 +22,12 @@ module "ram" {
   
 }
 
+module "routes" {
+    source = "./ROUTES"
+
+    vpc_1_private1_rt_id = module.vpc_1.vpc1_private1_rt_id
+    tgw_id = module.tgw.tgw_id
+    vpc_1_us_east_1_cidr = var.vpc_1_us_east_1_cidr
+  
+}
+

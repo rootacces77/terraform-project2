@@ -26,13 +26,6 @@ resource "aws_ec2_transit_gateway_route_table" "rt_main" {
   }
 }
 
-resource "aws_ec2_transit_gateway_route_table" "rt_isolated" {
-  transit_gateway_id = aws_ec2_transit_gateway.this.id
-
-  tags = {
-    Name = "${var.tgw_name}_tgw_rt_isolated"
-  }
-}
 
 ############################################
 # VPC Attachments
@@ -67,23 +60,28 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "vpc_2" {
 # Associations (decide which TGW RT is used
 # for traffic COMING FROM each VPC)
 ############################################
-# VPC_A traffic uses rt_main (so A can route to B)
-resource "aws_ec2_transit_gateway_route_table_association" "assoc_a" {
+# VPC_A traffic uses rt_main 
+resource "aws_ec2_transit_gateway_route_table_association" "assoc_1" {
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.vpc_1.id
   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.rt_main.id
 }
 
-# VPC_B traffic uses rt_isolated (no routes => B can't reach others)
-resource "aws_ec2_transit_gateway_route_table_association" "assoc_b" {
+# VPC_B traffic uses rt_main 
+resource "aws_ec2_transit_gateway_route_table_association" "assoc_2" {
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.vpc_2.id
-  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.rt_isolated.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.rt_main.id
 }
 
 ############################################
 # Propagation into rt_main (so rt_main learns
 # where VPC_B lives; you can also do static routes)
 ############################################
-resource "aws_ec2_transit_gateway_route_table_propagation" "prop_b_into_main" {
+resource "aws_ec2_transit_gateway_route_table_propagation" "prop_2_into_main" {
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.vpc_2.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.rt_main.id
+}
+
+resource "aws_ec2_transit_gateway_route_table_propagation" "prop_1_into_main" {
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.vpc_1.id
   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.rt_main.id
 }

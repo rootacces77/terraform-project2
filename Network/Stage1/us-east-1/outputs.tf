@@ -29,3 +29,8 @@ output "tgw_arn" {
     value = module.tgw.tgw_arn
   
 }
+
+output "vpc_1_us_east_1_cidr" {
+    value = module.vpc_1.vpc_cidr
+  
+}

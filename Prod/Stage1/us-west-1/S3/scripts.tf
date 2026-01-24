@@ -1,8 +1,8 @@
-module "lambda_bucket" {
+module "scripts_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "~> 4.0"
 
-  bucket        = "lambda-bucket-12314124"
+  bucket        = "scripts-bucket-12314124"
   force_destroy = true
 
   block_public_acls       = true
@@ -27,28 +27,28 @@ module "lambda_bucket" {
   }
 
   tags = {
-    Name        = "lambda-bucket"
+    Name        = "scripts-bucket"
     Environment = "PROD"
     Terraform   = "true"
   }
 }
 
 
-resource "aws_s3_object" "lambda" {
+resource "aws_s3_object" "scripts" {
   for_each = {
-    for f in local.lambda_files :
+    for f in local.scripts_files :
     f => f
     # Exclude "directories" if any tooling produces them (rare with fileset)
     if !endswith(f, "/")
   }
 
-  bucket = module.lambda_bucket.s3_bucket_id
+  bucket = module.scripts_bucket.s3_bucket_id
 
   # Keep directory structure in S3
   key    = each.value
-  source = "${local.lambda_dir}/${each.value}"
+  source = "${local.scripts_dir}/${each.value}"
 
   # Ensures changes trigger re-upload
-  etag = filemd5("${local.lambda_dir}/${each.value}")
+  etag = filemd5("${local.scripts_dir}/${each.value}")
 
 }

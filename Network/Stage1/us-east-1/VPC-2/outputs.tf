@@ -41,3 +41,9 @@ output "vpc_2_private2_subnets_ids" {
   description = "ID's of Private 2 Subnets "
   
 }
+
+output "vpc2_private1_rt_id" {
+  value = aws_route_table.vpc_2_private_rt.id
+  description = "ID of VPC-2 PRIVATE-1 Subnet RT "
+  
+}

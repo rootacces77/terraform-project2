@@ -27,8 +27,14 @@ module "routes" {
 
     tgw_id = module.tgw.tgw_id
 
-    vpc_1_vpn_rt_id = module.vpc_1.vpc1_vpn_rt_id
-    vpc_2_cidr      = module.vpc_2.vpc_cidr
+    vpc_1_vpn_rt_id      = module.vpc_1.vpc1_vpn_rt_id
+    vpc_1_cidr           = module.vpc_1.vpc_cidr 
+
+    vpc_2_cidr           = module.vpc_2.vpc_cidr
+    vpc_2_private1_rt_id = module.vpc_2.vpc2_private1_rt_id
+
+
+
   
 }
 

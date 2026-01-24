@@ -55,6 +55,14 @@ resource "aws_ec2_transit_gateway_route_table_association" "assoc_a" {
   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.rt_main.id
 }
 
+############################################
+# Propagation into rt_main (so rt_main learns
+# where VPC_B lives; you can also do static routes)
+############################################
+resource "aws_ec2_transit_gateway_route_table_propagation" "prop_1_into_main" {
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.vpc_1.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.rt_main.id
+}
 
 ############################################
 # TGW Attachments (eu_central_1 _> us_east_1)
